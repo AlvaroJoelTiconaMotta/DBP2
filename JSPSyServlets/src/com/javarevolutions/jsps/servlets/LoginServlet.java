@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.javarevolutions.jsps.servlets.vo.VOLogin;
-
 /**
  * Servlet implementation class LoginServlet
  */
@@ -41,15 +39,10 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("USUARIO : "+  usuario);
 		System.out.println("PASSWORD : "+ password);
 		if(usuario.equals("alvaro") &&  password.equals("ticona")) {
-			VOLogin vo = new VOLogin();
-			vo.setUsuario(usuario);
-			vo.setPassword(password);
-			vo.setEdad(20);
-			vo.setNombre("alvaro ticona");
-			request.setAttribute("usuariologeado", vo);
+			request.setAttribute("usuariologeado",usuario);
 			request.getRequestDispatcher("welcome.jsp").forward(request,response);
 		}else {
-			System.out.println("datos incorrectos");
+			System.out.println("Datos incorrectos");
 			System.out.println("----------------------------------");
 			response.sendRedirect("login.html");
 		}
